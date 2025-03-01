@@ -9,8 +9,20 @@
 		<link rel="icon" href="/images/logo.PNG" type="image/x-icon" />
 		
 		<link rel="stylesheet" href="/css/styles.css" />
+		<style>
+			#progress-bar1{
+			--progress: 0;
+			height: 12px;
+			width: var(--progress);
+			position: fixed;
+			z-index: 1001;
+			background: linear-gradient(45deg,rgb(41, 187, 203),rgb(181, 8, 155));
+			margin-top: -100px;
+			}
+		</style>
 	</head>
 	<body>
+		<div id="progress-bar"></div>
 		<nav class="nav">
 			<!-- Navigation section. -->
 			<i id="menuBarsColor" class="uil uil-bars navOpenBtn"></i>
@@ -24,11 +36,12 @@
 				<i class="uil uil-times navCloseBtn"></i>
 				<!-- Icon for closing navigation menu. -->
 
-				<li><a href="/">Home</a></li>
-				<li><a href="/play">Play Games</a></li>
-				<li><a href="/products">Products</a></li>
-				<li><a href="/about">About Us</a></li>
-				<li><a href="/contribute">Contribute</a></li>
+				<li><a href="/" class=" links-hover">Home</a></li>
+				<li><a href="/play" class=" links-hover">Play Games</a></li>
+				<li><a href="/products" class=" links-hover">Products</a></li>
+				<li><a href="/about" class=" links-hover">About Us</a></li>
+				<li><a href="https://chromegaming.github.io/Chrome-Gaming-Certification/" class=" links-hover">Certificate</a></li>
+				<li><a class="links-hover" onclick="openRateUs()">Rate Us</a></li>
 				<li>
 					<div class="small-screen-social">
 						<a
@@ -68,5 +81,14 @@
 				<i class="bi bi-toggle-off" id="theme-toggle"></i>
 			</div>
 		</nav>
+		<%- include('partials/rateus') %>
+        <script src="/js/script.js"></script>
+		<script>
+			  const updateProgress = () =>{
+    const {scrollTop,scrollHeight} = document.documentElement;
+    const scrollPercent = `${(scrollTop/(scrollHeight-window.innerHeight)) * 100}%`;
+    document.querySelector('#progress-bar1').style.setProperty('--progress',scrollPercent);
+}
+		</script>
 	</body>
 </html>
